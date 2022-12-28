@@ -1,6 +1,10 @@
 import { type FC } from 'react';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { View, Text } from 'react-native';
+import {
+  createMaterialTopTabNavigator,
+  MaterialTopTabNavigationOptions,
+} from '@react-navigation/material-top-tabs';
+import { COLORS, FONT_SIZES } from '~/theme';
 
 type SignedInParams = {
   Chat: undefined;
@@ -10,8 +14,22 @@ type SignedInParams = {
 const Tab = createMaterialTopTabNavigator<SignedInParams>();
 
 const SignedInNavigation: FC = () => {
+  const screenOptions: MaterialTopTabNavigationOptions = {
+    tabBarLabelStyle: {
+      fontSize: FONT_SIZES.normal,
+      fontWeight: 'bold',
+      textTransform: 'none',
+    },
+    tabBarActiveTintColor: COLORS.primary.default,
+    tabBarInactiveTintColor: COLORS.gray,
+    tabBarIndicatorStyle: {
+      height: 5,
+      backgroundColor: COLORS.primary.default,
+    },
+  };
+
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         name="Chat"
         component={() => (
