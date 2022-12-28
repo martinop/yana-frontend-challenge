@@ -2,8 +2,8 @@ import { type FC } from 'react';
 import { SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AuthNavigation from './AuthNavigation';
 import SignedInNavigation from './SignedInNavigation';
+import AuthScreen from '~/screens/AuthScreen';
 
 type RootStackParams = {
   Auth: undefined;
@@ -20,7 +20,7 @@ const RootNavigation: FC = () => {
         {hasSession ? (
           <Stack.Screen name="SignedIn" component={SignedInNavigation} />
         ) : (
-          <Stack.Screen name="Auth" component={AuthNavigation} />
+          <Stack.Screen name="Auth" component={AuthScreen} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
