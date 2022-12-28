@@ -5,6 +5,7 @@ import {
   MaterialTopTabNavigationOptions,
 } from '@react-navigation/material-top-tabs';
 import { COLORS, FONT_SIZES } from '~/theme';
+import ChatScreen from '~/screens/ChatScreen';
 
 type SignedInParams = {
   Chat: undefined;
@@ -32,17 +33,7 @@ const SignedInNavigation: FC = () => {
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         name="Chat"
-        component={() => (
-          <View>
-            <Text
-              style={{
-                fontSize: 30,
-              }}
-            >
-              Chat Tab
-            </Text>
-          </View>
-        )}
+        component={ChatScreen}
         options={{ title: 'Chat' }}
       />
       <Tab.Screen
