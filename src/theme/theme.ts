@@ -1,7 +1,16 @@
 import { DefaultTheme } from 'styled-components';
-import { SPACING } from './metrics';
 
 const numbericToPx = (value: number) => `${value}px`;
+
+export const SPACING = {
+  tiny: 4,
+  small: 8,
+  medium: 12,
+  mediumPlus: 14,
+  large: 16,
+  extraLarge: 24,
+  big: 48,
+};
 
 export const FONT_SIZES = {
   label: 12,
@@ -33,6 +42,7 @@ export const COLORS = {
     text: '#4B5959',
   },
   gray: '#808080',
+  lightGray: '#C4C4C4',
 };
 
 export const theme: DefaultTheme = {
@@ -47,6 +57,7 @@ export const theme: DefaultTheme = {
     tiny: numbericToPx(SPACING.tiny),
     small: numbericToPx(SPACING.small),
     medium: numbericToPx(SPACING.medium),
+    mediumPlus: numbericToPx(SPACING.mediumPlus),
     large: numbericToPx(SPACING.large),
     extraLarge: numbericToPx(SPACING.extraLarge),
     big: numbericToPx(SPACING.big),
@@ -59,8 +70,9 @@ export const theme: DefaultTheme = {
   },
   fontWeight: FONT_WEIGHTS,
   borderRadius: {
-    normal: '28px',
-    large: '32px',
+    normal: '20px',
+    large: '28px',
+    extraLarge: '32px',
   },
   colors: COLORS,
 };

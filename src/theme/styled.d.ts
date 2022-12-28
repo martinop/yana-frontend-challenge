@@ -11,6 +11,7 @@ declare module 'styled-components' {
       tiny: string;
       small: string;
       medium: string;
+      mediumPlus: string;
       large: string;
       extraLarge: string;
       big: string;
@@ -22,10 +23,12 @@ declare module 'styled-components' {
       cyan: IPalette;
       lightBlue: IPalette;
       gray: string;
+      lightGray: string;
     };
     borderRadius: {
-      large: string;
       normal: string;
+      large: string;
+      extraLarge: string;
     };
     fontSize: {
       label: string;

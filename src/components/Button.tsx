@@ -19,7 +19,7 @@ const variantsText = {
 
 const BaseButton = styled.TouchableOpacity<ButtonProps>`
   background-color: ${(props) => variantsBg[props.variant]};
-  border-radius: ${(props) => props.theme.borderRadius.large};
+  border-radius: ${(props) => props.theme.borderRadius.extraLarge};
   padding: ${(props) => props.theme.spacing.extraLarge};
 `;
 

@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import Button from '~/components/Button';
 import TextInput from '~/components/TextInput';
-import { SPACING } from '~/theme/metrics';
+import { SPACING } from '~/theme';
 
 const Title = styled.Text`
   font-size: ${(props) => props.theme.fontSize.large};

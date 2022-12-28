@@ -8,7 +8,7 @@ type TextInputProps = {
 
 const Input = styled.TextInput`
   background-color: ${(props) => props.theme.colors.lightBlue.default};
-  border-radius: ${(props) => props.theme.borderRadius.large};
+  border-radius: ${(props) => props.theme.borderRadius.extraLarge};
   font-size: ${(props) => props.theme.fontSize.normal};
   padding: ${(props) => props.theme.spacing.extraLarge};
   margin-top: ${(props) => props.theme.spacing.medium};
