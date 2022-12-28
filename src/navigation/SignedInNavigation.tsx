@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/material-top-tabs';
 import { COLORS, FONT_SIZES } from '~/theme';
 import ChatScreen from '~/screens/ChatScreen';
+import AccountScreen from '~/screens/AccountScreen';
 
 type SignedInParams = {
   Chat: undefined;
@@ -17,7 +18,7 @@ const Tab = createMaterialTopTabNavigator<SignedInParams>();
 const SignedInNavigation: FC = () => {
   const screenOptions: MaterialTopTabNavigationOptions = {
     tabBarLabelStyle: {
-      fontSize: FONT_SIZES.normal,
+      fontSize: FONT_SIZES.medium,
       fontWeight: 'bold',
       textTransform: 'none',
     },
@@ -38,17 +39,7 @@ const SignedInNavigation: FC = () => {
       />
       <Tab.Screen
         name="Account"
-        component={() => (
-          <View>
-            <Text
-              style={{
-                fontSize: 30,
-              }}
-            >
-              Account Tab
-            </Text>
-          </View>
-        )}
+        component={AccountScreen}
         options={{ title: 'Cuenta' }}
       />
     </Tab.Navigator>
