@@ -9,17 +9,19 @@ export const SPACING = {
   mediumPlus: 14,
   large: 16,
   extraLarge: 24,
-  big: 48,
+  big: 32,
+  huge: 48,
 };
 
 export const FONT_SIZES = {
-  label: 12,
+  tiny: 12,
   small: 14,
-  normal: 16,
+  medium: 16,
   large: 24,
 };
 
 export const FONT_WEIGHTS = {
+  regular: 400,
   bold: 700,
 };
 
@@ -43,6 +45,7 @@ export const COLORS = {
   },
   gray: '#808080',
   lightGray: '#C4C4C4',
+  black: '#000000',
 };
 
 export const theme: DefaultTheme = {
@@ -61,11 +64,12 @@ export const theme: DefaultTheme = {
     large: numbericToPx(SPACING.large),
     extraLarge: numbericToPx(SPACING.extraLarge),
     big: numbericToPx(SPACING.big),
+    huge: numbericToPx(SPACING.huge),
   },
   fontSize: {
-    label: numbericToPx(FONT_SIZES.label),
+    tiny: numbericToPx(FONT_SIZES.tiny),
     small: numbericToPx(FONT_SIZES.small),
-    normal: numbericToPx(FONT_SIZES.normal),
+    medium: numbericToPx(FONT_SIZES.medium),
     large: numbericToPx(FONT_SIZES.large),
   },
   fontWeight: FONT_WEIGHTS,

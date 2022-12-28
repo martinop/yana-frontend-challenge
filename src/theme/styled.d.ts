@@ -15,15 +15,17 @@ declare module 'styled-components' {
       large: string;
       extraLarge: string;
       big: string;
+      huge: string;
     };
     colors: {
       primary: IPalette;
-      background: string;
       red: IPalette;
       cyan: IPalette;
       lightBlue: IPalette;
+      background: string;
       gray: string;
       lightGray: string;
+      black: string;
     };
     borderRadius: {
       normal: string;
@@ -31,13 +33,14 @@ declare module 'styled-components' {
       extraLarge: string;
     };
     fontSize: {
-      label: string;
+      tiny: string;
       small: string;
-      normal: string;
+      medium: string;
       large: string;
     };
     fontWeight: {
       bold: number;
+      regular: number;
     };
   }
 }

@@ -25,7 +25,7 @@ const BaseButton = styled.TouchableOpacity<ButtonProps>`
 
 const BaseText = styled.Text<ButtonProps>`
   color: ${(props) => variantsText[props.variant]};
-  font-size: ${(props) => props.theme.fontSize.normal};
+  font-size: ${(props) => props.theme.fontSize.medium};
   font-weight: ${(props) => props.theme.fontWeight.bold};
   text-align: center;
 `;
@@ -33,7 +33,7 @@ const BaseText = styled.Text<ButtonProps>`
 const Button: FC<ButtonProps> = (props) => {
   const { children, variant } = props;
   return (
-    <BaseButton variant={variant} activeOpacity={0.85}>
+    <BaseButton variant={variant} activeOpacity={0.7}>
       <BaseText variant={variant}>{children}</BaseText>
     </BaseButton>
   );

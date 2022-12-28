@@ -3,14 +3,12 @@ import { Platform, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import Button from '~/components/Button';
+import Text from '~/components/Text';
 import TextInput from '~/components/TextInput';
 import { SPACING } from '~/theme';
 
-const Title = styled.Text`
-  font-size: ${(props) => props.theme.fontSize.large};
-  font-weight: ${(props) => props.theme.fontWeight.bold};
-  line-height: ${(props) => props.theme.fontSize.large};
-  margin: ${(props) => `${props.theme.spacing.big} auto`};
+const Title = styled(Text)`
+  margin: ${(props) => `${props.theme.spacing.huge} auto`};
 `;
 
 const MainContainer = styled.KeyboardAvoidingView`
@@ -31,7 +29,9 @@ const AuthScreen: FC = () => {
       keyboardVerticalOffset={SPACING.extraLarge}
     >
       <ScrollView>
-        <Title>Regístrate</Title>
+        <Title size="large" weight="bold">
+          Regístrate
+        </Title>
         <TextInput inputProps={{ placeholder: 'Nombre de usuario' }} />
         <TextInput inputProps={{ placeholder: 'Correo electrónico' }} />
         <TextInput inputProps={{ placeholder: 'Contraseña' }} />

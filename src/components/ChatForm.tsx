@@ -7,7 +7,7 @@ const Input = styled.TextInput`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
   border-radius: ${(props) => props.theme.borderRadius.large};
-  font-size: ${(props) => props.theme.fontSize.normal};
+  font-size: ${(props) => props.theme.fontSize.medium};
   padding: ${(props) =>
     `${props.theme.spacing.large} ${props.theme.spacing.extraLarge}`};
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
