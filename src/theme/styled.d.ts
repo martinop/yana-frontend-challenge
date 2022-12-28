@@ -21,6 +21,7 @@ declare module 'styled-components' {
       red: IPalette;
       cyan: IPalette;
       lightBlue: IPalette;
+      gray: string;
     };
     borderRadius: {
       large: string;

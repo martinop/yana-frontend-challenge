@@ -24,13 +24,11 @@ const SubmitContainer = styled(SafeAreaView)`
   padding-top: ${(props) => props.theme.spacing.large};
 `;
 
-const KEYBOARD_OFFSET = Number(SPACING?.extraLarge?.replace('px', '')) || 24;
-
 const AuthScreen: FC = () => {
   return (
     <MainContainer
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={KEYBOARD_OFFSET}
+      keyboardVerticalOffset={SPACING.extraLarge}
     >
       <ScrollView>
         <Title>Regístrate</Title>
