@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import SendIcon from '~/components/SendIcon';
+import useChat from '~/hooks/useChat';
 
 const Input = styled.TextInput`
   flex: 1;
@@ -31,12 +32,24 @@ const SubmitContainer = styled(SafeAreaView)`
 `;
 
 const ChatForm: FC = () => {
-  const disabled = false;
+  const [text, setText] = useState('');
+
+  const { addMessage } = useChat();
+
+  function onSubmit() {
+    addMessage({ message: 'dsads' });
+  }
+
+  const disabled = text.length === 0;
 
   return (
     <SubmitContainer edges={['bottom']}>
-      <Input placeholder="Ingresa aquí tu mensaje" />
-      <SubmitButton disabled={disabled}>
+      <Input
+        placeholder="Ingresa aquí tu mensaje"
+        value={text}
+        onChangeText={setText}
+      />
+      <SubmitButton disabled={disabled} activeOpacity={0.7} onPress={onSubmit}>
         <SendIcon />
       </SubmitButton>
     </SubmitContainer>

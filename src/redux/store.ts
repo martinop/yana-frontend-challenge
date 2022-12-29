@@ -12,13 +12,14 @@ import {
 } from 'redux-persist';
 import Storage from 'redux-persist-expo-filesystem';
 import auth from './slices/authSlice';
+import chat from './slices/chatSlice';
 
 const persistConfig = {
   key: 'root',
   storage: Storage,
 };
 
-const rootReducer = combineReducers({ auth });
+const rootReducer = combineReducers({ auth, chat });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const preloadedState = {};
