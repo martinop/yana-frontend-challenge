@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { AnyAction, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import {
   persistStore,
@@ -10,6 +10,7 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
+import storage from 'redux-persist-expo-filesystem';
 import Storage from 'redux-persist-expo-filesystem';
 import auth from './slices/authSlice';
 import chat from './slices/chatSlice';
@@ -19,7 +20,18 @@ const persistConfig = {
   storage: Storage,
 };
 
-const rootReducer = combineReducers({ auth, chat });
+const reducers = combineReducers({ auth, chat });
+
+type RootReducerState = ReturnType<typeof reducers> | undefined;
+
+export const rootReducer = (state: RootReducerState, action: AnyAction) => {
+  if (action.type === 'auth/logOut') {
+    storage.removeItem('persist:root');
+    return reducers(undefined, action);
+  }
+
+  return reducers(state, action);
+};
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const preloadedState = {};

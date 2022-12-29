@@ -27,9 +27,12 @@ const authSlice = createSlice({
         email: action.payload.email,
       };
     },
+    logOut: () => {
+      // at root level
+    },
   },
 });
 
-export const { signUp } = authSlice.actions;
+export const { signUp, logOut } = authSlice.actions;
 
 export default authSlice.reducer;

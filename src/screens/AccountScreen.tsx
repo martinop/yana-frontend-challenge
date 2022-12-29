@@ -1,8 +1,10 @@
+import { Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import BaseAvatar from '~/components/Avatar';
 import Button from '~/components/Button';
 import Text from '~/components/Text';
+import useAuth from '~/hooks/useAuth';
 import { useGetAvatar } from '~/hooks/useGetAvatar';
 
 const ContentContainer = styled.View`
@@ -26,6 +28,21 @@ const Container = styled.View`
 
 const AccountScreen = () => {
   const avatar = useGetAvatar('user');
+  const { user, logOut } = useAuth();
+
+  function onLogout() {
+    Alert.alert('Quieres cerrar sesión?', 'Toda tu informacion desaparecera', [
+      {
+        text: 'Cerrar Sesión',
+        onPress: logOut,
+        style: 'destructive',
+      },
+      {
+        text: 'Cancelar',
+        style: 'cancel',
+      },
+    ]);
+  }
 
   return (
     <Container>
@@ -36,7 +53,7 @@ const AccountScreen = () => {
             Nombre de usuario
           </Text>
           <Text size="medium" weight="bold" color="black">
-            test3
+            {user.userName}
           </Text>
         </InfoContainer>
         <InfoContainer>
@@ -44,12 +61,14 @@ const AccountScreen = () => {
             Correo electrónico
           </Text>
           <Text size="medium" weight="bold" color="black">
-            test@gmail.com
+            {user.email}
           </Text>
         </InfoContainer>
       </ContentContainer>
       <SafeAreaView>
-        <Button variant="danger">Cerrar Sesión</Button>
+        <Button variant="danger" onPress={onLogout}>
+          Cerrar Sesión
+        </Button>
       </SafeAreaView>
     </Container>
   );
