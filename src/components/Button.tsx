@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 import { theme } from '~/theme';
@@ -33,7 +32,7 @@ const BaseText = styled.Text<ButtonProps>`
   text-align: center;
 `;
 
-const Button: FC<ButtonProps> = (props) => {
+const Button = (props: ButtonProps) => {
   const { children, variant, disabled, ...restProps } = props;
   return (
     <BaseButton

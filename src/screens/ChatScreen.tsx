@@ -1,17 +1,12 @@
-import type { FC } from 'react';
 import { Platform } from 'react-native';
-import styled from 'styled-components/native';
 import ChatForm from '~/components/ChatForm';
+import ChatList from '~/components/ChatList';
 import Container from '~/components/Container';
 
-const List = styled.View`
-  flex: 1;
-`;
-
-const ChatScreen: FC = () => {
+const ChatScreen = () => {
   return (
     <Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <List />
+      <ChatList />
       <ChatForm />
     </Container>
   );

@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import Button from '~/components/Button';
@@ -24,7 +23,7 @@ const Avatar = styled.Image`
   margin-bottom: ${(props) => props.theme.spacing.extraLarge};
 `;
 
-const AccountScreen: FC = () => {
+const AccountScreen = () => {
   const avatar = useGetAvatar('yana');
 
   return (
