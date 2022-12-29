@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import SendIcon from '~/components/SendIcon';
 
 import { type UseChat } from '~/hooks/useChat';
+import { COLORS } from '~/theme';
 
 type ChatFormProps = Pick<UseChat, 'addMessage'>;
 
@@ -14,7 +15,6 @@ const Input = styled.TextInput`
   font-size: ${(props) => props.theme.fontSize.medium};
   padding: ${(props) =>
     `${props.theme.spacing.large} ${props.theme.spacing.extraLarge}`};
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   height: 56px;
 `;
 
@@ -26,7 +26,7 @@ const SubmitButton = styled.TouchableOpacity`
       : props.theme.colors.primary.default};
   padding: ${(props) =>
     `${props.theme.spacing.mediumPlus} ${props.theme.spacing.medium}`};
-  border-radius: 100%;
+  border-radius: 100px;
 `;
 
 const SubmitContainer = styled(SafeAreaView)`
@@ -51,6 +51,16 @@ const ChatForm = (props: ChatFormProps) => {
         placeholder="Ingresa aquí tu mensaje"
         value={text}
         onChangeText={setText}
+        style={{
+          shadowColor: COLORS.black,
+          shadowOffset: {
+            width: 0,
+            height: 3.5,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 4,
+        }}
       />
       <SubmitButton disabled={disabled} activeOpacity={0.7} onPress={onSubmit}>
         <SendIcon />

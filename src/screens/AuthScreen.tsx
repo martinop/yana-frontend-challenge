@@ -17,7 +17,7 @@ const Title = styled(Text)`
 
 const MainContainer = styled.KeyboardAvoidingView`
   background-color: ${(props) => props.theme.colors.background};
-  padding: ${(props) => `0 ${props.theme.spacing.extraLarge}`};
+  padding: ${(props) => props.theme.spacing.extraLarge};
   flex: 1;
   justify-content: space-between;
 `;

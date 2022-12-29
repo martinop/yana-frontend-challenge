@@ -8,6 +8,7 @@ import { persistor, store } from './src/redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import Challenge from './src';
 import { theme } from './src/theme';
+import { StatusBar } from 'react-native';
 
 dayjs.locale('es');
 
@@ -16,6 +17,7 @@ export default function App() {
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
         <ThemeProvider theme={theme}>
+          <StatusBar />
           <Challenge />
         </ThemeProvider>
       </PersistGate>

@@ -23,7 +23,7 @@ const Avatar = styled(BaseAvatar)`
 const Container = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
-  padding: ${(props) => `0 ${props.theme.spacing.large}`};
+  padding: ${(props) => props.theme.spacing.extraLarge};
 `;
 
 const AccountScreen = () => {

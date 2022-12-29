@@ -7,7 +7,7 @@ import useChat from '~/hooks/useChat';
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   background-color: ${(props) => props.theme.colors.background};
-  padding: ${(props) => `0 ${props.theme.spacing.large}`};
+  padding: ${(props) => props.theme.spacing.extraLarge};
 `;
 
 const ChatScreen = () => {
