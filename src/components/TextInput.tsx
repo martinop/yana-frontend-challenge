@@ -1,6 +1,7 @@
 import { Controller, FieldError, UseControllerProps } from 'react-hook-form';
 import { View, type TextInputProps as InputProps } from 'react-native';
 import styled from 'styled-components/native';
+import { COLORS } from '~/theme';
 
 interface TextInputProps<T> {
   inputProps?: InputProps &
@@ -36,6 +37,7 @@ const TextInput = <T,>(props: TextInputProps<T>) => {
             {...restInputProps}
             onBlur={onBlur}
             onChangeText={(value) => onChange(value)}
+            placeholderTextColor={COLORS.gray}
             value={value}
           />
         )}
