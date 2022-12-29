@@ -31,6 +31,7 @@ export const COLORS = {
     text: '#672A11',
   },
   background: '#ffffff',
+  white: '#ffffff',
   red: {
     default: '#FFC5C5',
     text: '#671111',
@@ -49,13 +50,6 @@ export const COLORS = {
 };
 
 export const theme: DefaultTheme = {
-  // spacing: Object.keys(SPACING).reduce(
-  //   (prev, current) => ({
-  //     ...prev,
-  //     [current]: `${SPACING[current]}px`,
-  //   }),
-  //   {} as Pick<DefaultTheme, 'spacing'>
-  // ),
   spacing: {
     tiny: numbericToPx(SPACING.tiny),
     small: numbericToPx(SPACING.small),

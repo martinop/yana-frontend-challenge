@@ -1,10 +1,13 @@
-import { type FC } from 'react';
-import { type TextInputProps as InputProps } from 'react-native';
+import { Controller, FieldError, UseControllerProps } from 'react-hook-form';
+import { View, type TextInputProps as InputProps } from 'react-native';
 import styled from 'styled-components/native';
 
-type TextInputProps = {
-  inputProps?: InputProps;
-};
+interface TextInputProps<T> {
+  inputProps?: InputProps &
+    UseControllerProps<T> & {
+      error?: FieldError | undefined;
+    };
+}
 
 const Input = styled.TextInput`
   background-color: ${(props) => props.theme.colors.lightBlue.default};
@@ -14,9 +17,33 @@ const Input = styled.TextInput`
   margin-top: ${(props) => props.theme.spacing.medium};
 `;
 
-const TextInput: FC<TextInputProps> = (props) => {
-  const { inputProps } = props;
-  return <Input {...inputProps} />;
+const Error = styled.Text`
+  color: ${(props) => props.theme.colors.red.text};
+  padding: ${(props) =>
+    `${props.theme.spacing.small} ${props.theme.spacing.extraLarge}`};
+`;
+
+const TextInput = <T,>(props: TextInputProps<T>) => {
+  const {
+    inputProps: { control, name, error, ...restInputProps },
+  } = props;
+  return (
+    <View>
+      <Controller
+        control={control}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <Input
+            {...restInputProps}
+            onBlur={onBlur}
+            onChangeText={(value) => onChange(value)}
+            value={value}
+          />
+        )}
+        name={name}
+      />
+      {error && <Error>{error.message}</Error>}
+    </View>
+  );
 };
 
 export default TextInput;

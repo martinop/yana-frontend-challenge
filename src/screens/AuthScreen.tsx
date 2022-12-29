@@ -1,4 +1,6 @@
 import { type FC } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Platform, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
@@ -6,6 +8,7 @@ import Button from '~/components/Button';
 import Text from '~/components/Text';
 import TextInput from '~/components/TextInput';
 import { SPACING } from '~/theme';
+import { authSchema } from '~/utils/schemas';
 
 const Title = styled(Text)`
   margin: ${(props) => `${props.theme.spacing.huge} auto`};
@@ -22,7 +25,35 @@ const SubmitContainer = styled(SafeAreaView)`
   padding-top: ${(props) => props.theme.spacing.large};
 `;
 
+interface UserSubmitForm {
+  email: string;
+  userName: string;
+  password: string;
+}
+
+const defaultValues: UserSubmitForm = {
+  email: '',
+  userName: '',
+  password: '',
+};
+
 const AuthScreen: FC = () => {
+  const {
+    handleSubmit,
+    control,
+    getValues,
+    formState: { errors, isValid },
+  } = useForm<UserSubmitForm>({
+    defaultValues,
+    mode: 'onBlur',
+    resolver: yupResolver(authSchema),
+  });
+
+  console.log(getValues());
+  const onSubmit = (data: UserSubmitForm) => {
+    console.log(data);
+  };
+
   return (
     <MainContainer
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -32,12 +63,37 @@ const AuthScreen: FC = () => {
         <Title size="large" weight="bold">
           Regístrate
         </Title>
-        <TextInput inputProps={{ placeholder: 'Nombre de usuario' }} />
-        <TextInput inputProps={{ placeholder: 'Correo electrónico' }} />
-        <TextInput inputProps={{ placeholder: 'Contraseña' }} />
+        <TextInput
+          inputProps={{
+            placeholder: 'Nombre de usuario',
+            control,
+            name: 'userName',
+            error: errors.userName,
+          }}
+        />
+        <TextInput
+          inputProps={{
+            placeholder: 'Correo electrónico',
+            control,
+            name: 'email',
+            error: errors.email,
+          }}
+        />
+        <TextInput
+          inputProps={{
+            placeholder: 'Contraseña',
+            control,
+            name: 'password',
+            autoComplete: 'password-new',
+            secureTextEntry: true,
+            error: errors.password,
+          }}
+        />
       </ScrollView>
       <SubmitContainer edges={['bottom']}>
-        <Button>Crear Cuenta</Button>
+        <Button disabled={!isValid} onPress={handleSubmit(onSubmit)}>
+          Crear Cuenta
+        </Button>
       </SubmitContainer>
     </MainContainer>
   );

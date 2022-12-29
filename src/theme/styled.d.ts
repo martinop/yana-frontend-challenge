@@ -26,6 +26,7 @@ declare module 'styled-components' {
       gray: string;
       lightGray: string;
       black: string;
+      white: string;
     };
     borderRadius: {
       normal: string;

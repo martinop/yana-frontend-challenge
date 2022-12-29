@@ -13,7 +13,7 @@ type RootStackParams = {
 const Stack = createNativeStackNavigator<RootStackParams>();
 
 const RootNavigation: FC = () => {
-  const hasSession = true;
+  const hasSession = false;
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ header: () => <SafeAreaView /> }}>

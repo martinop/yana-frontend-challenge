@@ -13,8 +13,8 @@ interface TextProps {
 }
 
 const Text = styled.Text<TextProps>`
-  font-size: ${(props) => FONT_SIZES[props.size]};
-  line-height: ${FONT_SIZES.large}px;
+  font-size: ${(props) => props.theme.fontSize[props.size]};
+  line-height: ${(props) => props.theme.fontSize.large};
   color: ${(props) => {
     const color = props.theme.colors[props.color];
     if (typeof color === 'string') return color;

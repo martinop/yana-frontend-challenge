@@ -1,11 +1,12 @@
 import type { FC } from 'react';
+import { TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 import { theme } from '~/theme';
 
 type ButtonProps = {
   variant?: 'primary' | 'danger';
   children: React.ReactNode;
-};
+} & TouchableOpacityProps;
 
 const variantsBg = {
   primary: theme.colors.primary.default,
@@ -18,23 +19,32 @@ const variantsText = {
 };
 
 const BaseButton = styled.TouchableOpacity<ButtonProps>`
-  background-color: ${(props) => variantsBg[props.variant]};
+  background-color: ${(props) =>
+    props.disabled ? props.theme.colors.lightGray : variantsBg[props.variant]};
   border-radius: ${(props) => props.theme.borderRadius.extraLarge};
   padding: ${(props) => props.theme.spacing.extraLarge};
 `;
 
 const BaseText = styled.Text<ButtonProps>`
-  color: ${(props) => variantsText[props.variant]};
+  color: ${(props) =>
+    props.disabled ? props.theme.colors.white : variantsText[props.variant]};
   font-size: ${(props) => props.theme.fontSize.medium};
   font-weight: ${(props) => props.theme.fontWeight.bold};
   text-align: center;
 `;
 
 const Button: FC<ButtonProps> = (props) => {
-  const { children, variant } = props;
+  const { children, variant, disabled, ...restProps } = props;
   return (
-    <BaseButton variant={variant} activeOpacity={0.7}>
-      <BaseText variant={variant}>{children}</BaseText>
+    <BaseButton
+      variant={variant}
+      disabled={disabled}
+      activeOpacity={0.7}
+      {...restProps}
+    >
+      <BaseText disabled={disabled} variant={variant}>
+        {children}
+      </BaseText>
     </BaseButton>
   );
 };
