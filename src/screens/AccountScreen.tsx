@@ -2,7 +2,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import BaseAvatar from '~/components/Avatar';
 import Button from '~/components/Button';
-import Container from '~/components/Container';
 import Text from '~/components/Text';
 import { useGetAvatar } from '~/hooks/useGetAvatar';
 
@@ -18,6 +17,12 @@ const Avatar = styled(BaseAvatar)`
   border-radius: 100%;
   margin: ${(props) => `${props.theme.spacing.huge} auto 0 auto`};
   margin-bottom: ${(props) => props.theme.spacing.extraLarge};
+`;
+
+const Container = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.background};
+  padding: ${(props) => `0 ${props.theme.spacing.large}`};
 `;
 
 const AccountScreen = () => {
