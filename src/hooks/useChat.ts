@@ -1,18 +1,26 @@
+import { useMemo } from 'react';
 import { useCallback } from 'react';
 import { type AddMessagePayload } from '~/redux/slices/chatSlice';
-import { addMessageAsync, ChatState } from '~/redux/slices/chatSlice';
+import { addMessageAsync } from '~/redux/slices/chatSlice';
+import { getMessagesByDate, type MessagesSections } from '~/utils/chat';
 import { useAppDispatch, useAppSelector } from './redux';
 
 type AddMessage = Pick<AddMessagePayload, 'message'>;
 
-export interface UseChat extends ChatState {
+export interface UseChat {
   addMessage: (values: AddMessage) => void;
+  messages: MessagesSections;
+  isLoading: boolean;
 }
 
 const useChat = (): UseChat => {
   const dispatch = useAppDispatch();
 
-  const { messages, isLoading, userName } = useAppSelector((state) => ({
+  const {
+    messages: _messages,
+    isLoading,
+    userName,
+  } = useAppSelector((state) => ({
     messages: state.chat.messages,
     isLoading: state.chat.isLoading,
     userName: state.auth.user?.userName,
@@ -23,6 +31,8 @@ const useChat = (): UseChat => {
       dispatch(addMessageAsync({ message: value.message, sender: userName })),
     [userName]
   );
+
+  const messages = useMemo(() => getMessagesByDate(_messages), [_messages]);
 
   return { addMessage, messages, isLoading };
 };

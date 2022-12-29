@@ -8,6 +8,7 @@ const List = styled.View`
 `;
 const ChatList = (props: ChatListProps) => {
   const { messages, isLoading } = props;
+  console.log(messages);
   return <List />;
 };
 
