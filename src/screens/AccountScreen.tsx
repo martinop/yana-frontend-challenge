@@ -1,10 +1,10 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
+import BaseAvatar from '~/components/Avatar';
 import Button from '~/components/Button';
 import Container from '~/components/Container';
 import Text from '~/components/Text';
 import { useGetAvatar } from '~/hooks/useGetAvatar';
-import { SPACING } from '~/theme';
 
 const ContentContainer = styled.View`
   flex: 1;
@@ -14,17 +14,14 @@ const InfoContainer = styled.View`
   margin-top: ${(props) => props.theme.spacing.big};
 `;
 
-const Avatar = styled.Image`
-  width: ${SPACING.huge * 2}px;
-  height: ${SPACING.huge * 2}px;
-  background-color: #c4c4c4;
+const Avatar = styled(BaseAvatar)`
   border-radius: 100%;
   margin: ${(props) => `${props.theme.spacing.huge} auto 0 auto`};
   margin-bottom: ${(props) => props.theme.spacing.extraLarge};
 `;
 
 const AccountScreen = () => {
-  const avatar = useGetAvatar('yana');
+  const avatar = useGetAvatar('user');
 
   return (
     <Container>
