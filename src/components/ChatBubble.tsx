@@ -19,19 +19,27 @@ const BubbleContainer = styled.View<Pick<ChatMessage, 'sender'>>`
   margin: ${(props) => props.theme.spacing.tiny} 0;
 `;
 
-const ChatBubble = (props: ChatMessage) => {
-  const { sender, message } = props;
+type ChatBubbleProps = Pick<ChatMessage, 'sender'> & {
+  children: string | React.ReactNode;
+};
+
+const ChatBubble = (props: ChatBubbleProps) => {
+  const { sender, children } = props;
   const isFromYana = sender === 'yana';
   return (
     <BubbleContainer sender={sender}>
       <Bubble sender={sender}>
-        <Text
-          size="small"
-          color={isFromYana ? 'lightBlue' : 'cyan'}
-          alignment={isFromYana ? 'right' : 'left'}
-        >
-          {message}
-        </Text>
+        {typeof children === 'string' ? (
+          <Text
+            size="small"
+            color={isFromYana ? 'lightBlue' : 'cyan'}
+            alignment={isFromYana ? 'right' : 'left'}
+          >
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
       </Bubble>
     </BubbleContainer>
   );

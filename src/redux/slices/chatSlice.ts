@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import sleep from '~/utils/sleep';
 
 export interface ChatMessage {
@@ -51,7 +51,6 @@ const chatSlice = createSlice({
         state.messages.push(userMessage);
       })
       .addCase(addMessageAsync.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.messages.push(action.payload);
         state.isLoading = false;
       });

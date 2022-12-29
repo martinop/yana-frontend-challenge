@@ -4,6 +4,7 @@ import { type UseChat } from '~/hooks/useChat';
 import type { ChatMessage } from '~/redux/slices/chatSlice';
 import { MessagesSection } from '~/utils/chat';
 import ChatBubble from './ChatBubble';
+import DotsAnimation from './DotsAnimation';
 import Text from './Text';
 
 type ChatListProps = Pick<UseChat, 'sections' | 'isLoading'>;
@@ -32,9 +33,9 @@ const renderSectionHeader: SectionHeaderProps = ({ section }) => {
   );
 };
 
-const renderItem: ListRenderItem<ChatMessage> = ({ item }) => {
-  return <ChatBubble {...item} />;
-};
+const renderItem: ListRenderItem<ChatMessage> = ({ item }) => (
+  <ChatBubble sender={item.sender}>{item.message}</ChatBubble>
+);
 
 const ChatList = (props: ChatListProps) => {
   const { sections, isLoading } = props;
@@ -47,6 +48,7 @@ const ChatList = (props: ChatListProps) => {
       initialNumToRender={10}
       stickySectionHeadersEnabled={false}
       inverted
+      renderSectionFooter={() => (isLoading ? <DotsAnimation /> : null)}
     />
   );
 };
