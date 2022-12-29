@@ -9,6 +9,7 @@ import Text from '~/components/Text';
 import TextInput from '~/components/TextInput';
 import { SPACING } from '~/theme';
 import { authSchema } from '~/utils/schemas';
+import useAuth from '~/hooks/useAuth';
 
 const Title = styled(Text)`
   margin: ${(props) => `${props.theme.spacing.huge} auto`};
@@ -25,7 +26,7 @@ const SubmitContainer = styled(SafeAreaView)`
   padding-top: ${(props) => props.theme.spacing.large};
 `;
 
-interface UserSubmitForm {
+export interface UserSubmitForm {
   email: string;
   userName: string;
   password: string;
@@ -41,7 +42,6 @@ const AuthScreen: FC = () => {
   const {
     handleSubmit,
     control,
-    getValues,
     formState: { errors, isValid },
   } = useForm<UserSubmitForm>({
     defaultValues,
@@ -49,10 +49,9 @@ const AuthScreen: FC = () => {
     resolver: yupResolver(authSchema),
   });
 
-  console.log(getValues());
-  const onSubmit = (data: UserSubmitForm) => {
-    console.log(data);
-  };
+  const { signUp } = useAuth();
+
+  const onSubmit = signUp;
 
   return (
     <MainContainer
