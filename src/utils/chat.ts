@@ -4,7 +4,8 @@ import type { SectionListData, DefaultSectionT } from 'react-native';
 
 import type { ChatMessage } from '~/redux/slices/chatSlice';
 
-export type MessagesSections = SectionListData<ChatMessage, DefaultSectionT>[];
+export type MessagesSection = SectionListData<ChatMessage, DefaultSectionT>;
+export type MessagesSections = MessagesSection[];
 
 type MessagesByDate = (messages: ChatMessage[]) => MessagesSections;
 

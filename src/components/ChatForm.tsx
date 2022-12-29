@@ -40,6 +40,7 @@ const ChatForm = (props: ChatFormProps) => {
 
   function onSubmit() {
     addMessage({ message: text });
+    setText('');
   }
 
   const disabled = text.length === 0;

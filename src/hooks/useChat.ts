@@ -9,18 +9,14 @@ type AddMessage = Pick<AddMessagePayload, 'message'>;
 
 export interface UseChat {
   addMessage: (values: AddMessage) => void;
-  messages: MessagesSections;
+  sections: MessagesSections;
   isLoading: boolean;
 }
 
 const useChat = (): UseChat => {
   const dispatch = useAppDispatch();
 
-  const {
-    messages: _messages,
-    isLoading,
-    userName,
-  } = useAppSelector((state) => ({
+  const { messages, isLoading, userName } = useAppSelector((state) => ({
     messages: state.chat.messages,
     isLoading: state.chat.isLoading,
     userName: state.auth.user?.userName,
@@ -32,9 +28,9 @@ const useChat = (): UseChat => {
     [userName]
   );
 
-  const messages = useMemo(() => getMessagesByDate(_messages), [_messages]);
+  const sections = useMemo(() => getMessagesByDate(messages), [messages]);
 
-  return { addMessage, messages, isLoading };
+  return { addMessage, sections, isLoading };
 };
 
 export default useChat;

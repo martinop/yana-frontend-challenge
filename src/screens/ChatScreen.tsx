@@ -5,11 +5,11 @@ import Container from '~/components/Container';
 import useChat from '~/hooks/useChat';
 
 const ChatScreen = () => {
-  const { addMessage, messages, isLoading } = useChat();
+  const { addMessage, sections, isLoading } = useChat();
 
   return (
     <Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <ChatList messages={messages} isLoading={isLoading} />
+      <ChatList sections={sections} isLoading={isLoading} />
       <ChatForm addMessage={addMessage} />
     </Container>
   );
