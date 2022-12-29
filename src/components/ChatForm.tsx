@@ -15,7 +15,6 @@ const Input = styled.TextInput`
   font-size: ${(props) => props.theme.fontSize.medium};
   padding: ${(props) =>
     `${props.theme.spacing.large} ${props.theme.spacing.extraLarge}`};
-  height: 56px;
 `;
 
 const SubmitButton = styled.TouchableOpacity`

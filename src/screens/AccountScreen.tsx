@@ -1,5 +1,4 @@
-import { Alert } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Alert, SafeAreaView } from 'react-native';
 import styled from 'styled-components/native';
 import BaseAvatar from '~/components/Avatar';
 import Button from '~/components/Button';
