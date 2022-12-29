@@ -2,11 +2,7 @@ import type { FC } from 'react';
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import ChatForm from '~/components/ChatForm';
-
-const Container = styled.KeyboardAvoidingView`
-  flex: 1;
-  padding: ${(props) => `0 ${props.theme.spacing.large}`};
-`;
+import Container from '~/components/Container';
 
 const List = styled.View`
   flex: 1;
