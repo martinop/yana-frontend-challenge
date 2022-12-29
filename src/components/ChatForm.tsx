@@ -1,8 +1,11 @@
-import { FC, useState } from 'react';
+import { memo, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import SendIcon from '~/components/SendIcon';
-import useChat from '~/hooks/useChat';
+
+import { type UseChat } from '~/hooks/useChat';
+
+type ChatFormProps = Pick<UseChat, 'addMessage'>;
 
 const Input = styled.TextInput`
   flex: 1;
@@ -31,13 +34,12 @@ const SubmitContainer = styled(SafeAreaView)`
   align-items: center;
 `;
 
-const ChatForm: FC = () => {
+const ChatForm = (props: ChatFormProps) => {
+  const { addMessage } = props;
   const [text, setText] = useState('');
 
-  const { addMessage } = useChat();
-
   function onSubmit() {
-    addMessage({ message: 'dsads' });
+    addMessage({ message: text });
   }
 
   const disabled = text.length === 0;
@@ -56,4 +58,4 @@ const ChatForm: FC = () => {
   );
 };
 
-export default ChatForm;
+export default memo(ChatForm);

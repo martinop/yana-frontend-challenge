@@ -1,10 +1,11 @@
+import { useCallback } from 'react';
 import { type AddMessagePayload } from '~/redux/slices/chatSlice';
 import { addMessageAsync, ChatState } from '~/redux/slices/chatSlice';
 import { useAppDispatch, useAppSelector } from './redux';
 
 type AddMessage = Pick<AddMessagePayload, 'message'>;
 
-interface UseChat extends ChatState {
+export interface UseChat extends ChatState {
   addMessage: (values: AddMessage) => void;
 }
 
@@ -17,9 +18,11 @@ const useChat = (): UseChat => {
     userName: state.auth.user?.userName,
   }));
 
-  function addMessage(values: AddMessage) {
-    dispatch(addMessageAsync({ message: values.message, sender: userName }));
-  }
+  const addMessage = useCallback(
+    (value: AddMessage) =>
+      dispatch(addMessageAsync({ message: value.message, sender: userName })),
+    [userName]
+  );
 
   return { addMessage, messages, isLoading };
 };

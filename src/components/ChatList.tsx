@@ -1,9 +1,13 @@
 import styled from 'styled-components/native';
+import { type UseChat } from '~/hooks/useChat';
+
+type ChatListProps = Pick<UseChat, 'messages' | 'isLoading'>;
 
 const List = styled.View`
   flex: 1;
 `;
-const ChatList = () => {
+const ChatList = (props: ChatListProps) => {
+  const { messages, isLoading } = props;
   return <List />;
 };
 
