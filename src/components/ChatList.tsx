@@ -5,6 +5,7 @@ import type { ChatMessage } from '~/redux/slices/chatSlice';
 import { MessagesSection } from '~/utils/chat';
 import ChatBubble from './ChatBubble';
 import DotsAnimation from './DotsAnimation';
+import EmptyChat from './EmptyChat';
 import Text from './Text';
 
 type ChatListProps = Pick<UseChat, 'sections' | 'isLoading'>;
@@ -47,8 +48,9 @@ const ChatList = (props: ChatListProps) => {
       renderSectionHeader={renderSectionHeader}
       initialNumToRender={10}
       stickySectionHeadersEnabled={false}
-      inverted
+      ListEmptyComponent={EmptyChat}
       renderSectionFooter={() => (isLoading ? <DotsAnimation /> : null)}
+      inverted={sections.length > 0}
     />
   );
 };

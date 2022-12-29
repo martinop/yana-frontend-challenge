@@ -11,6 +11,7 @@ const Bubble = styled.View<Pick<ChatMessage, 'sender'>>`
     props.sender === 'yana'
       ? props.theme.colors.lightBlue.default
       : props.theme.colors.cyan.default};
+  max-width: 90%;
 `;
 
 const BubbleContainer = styled.View<Pick<ChatMessage, 'sender'>>`

@@ -14,9 +14,8 @@ const InfoContainer = styled.View`
 `;
 
 const Avatar = styled(BaseAvatar)`
-  border-radius: 100%;
-  margin: ${(props) => `${props.theme.spacing.huge} auto 0 auto`};
   margin-bottom: ${(props) => props.theme.spacing.extraLarge};
+  background-color: ${(props) => props.theme.colors.lightGray};
 `;
 
 const Container = styled.View`
