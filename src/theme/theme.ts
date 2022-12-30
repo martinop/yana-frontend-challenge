@@ -71,6 +71,7 @@ export const theme: DefaultTheme = {
     normal: '20px',
     large: '28px',
     extraLarge: '32px',
+    full: '100px',
   },
   colors: COLORS,
 };

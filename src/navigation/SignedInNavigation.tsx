@@ -1,5 +1,3 @@
-import { type FC } from 'react';
-import { View, Text } from 'react-native';
 import {
   createMaterialTopTabNavigator,
   MaterialTopTabNavigationOptions,
@@ -15,7 +13,7 @@ type SignedInParams = {
 
 const Tab = createMaterialTopTabNavigator<SignedInParams>();
 
-const SignedInNavigation: FC = () => {
+const SignedInNavigation = () => {
   const screenOptions: MaterialTopTabNavigationOptions = {
     tabBarLabelStyle: {
       fontSize: FONT_SIZES.medium,

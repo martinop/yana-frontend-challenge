@@ -19,7 +19,7 @@ const ChatScreen = () => {
       keyboardVerticalOffset={80}
     >
       <ChatList sections={sections} isLoading={isLoading} />
-      <ChatForm addMessage={addMessage} />
+      <ChatForm addMessage={addMessage} isLoading={isLoading} />
     </Container>
   );
 };

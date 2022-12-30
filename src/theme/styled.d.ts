@@ -32,6 +32,7 @@ declare module 'styled-components' {
       normal: string;
       large: string;
       extraLarge: string;
+      full: string;
     };
     fontSize: {
       tiny: string;

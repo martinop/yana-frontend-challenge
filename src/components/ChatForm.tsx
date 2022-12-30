@@ -6,7 +6,7 @@ import SendIcon from '~/components/SendIcon';
 import { type UseChat } from '~/hooks/useChat';
 import { COLORS } from '~/theme';
 
-type ChatFormProps = Pick<UseChat, 'addMessage'>;
+type ChatFormProps = Pick<UseChat, 'addMessage' | 'isLoading'>;
 
 const Input = styled.TextInput`
   flex: 1;
@@ -25,7 +25,7 @@ const SubmitButton = styled.TouchableOpacity`
       : props.theme.colors.primary.default};
   padding: ${(props) =>
     `${props.theme.spacing.mediumPlus} ${props.theme.spacing.medium}`};
-  border-radius: 100px;
+  border-radius: ${(props) => props.theme.borderRadius.full};
 `;
 
 const SubmitContainer = styled(SafeAreaView)`
@@ -34,7 +34,7 @@ const SubmitContainer = styled(SafeAreaView)`
 `;
 
 const ChatForm = (props: ChatFormProps) => {
-  const { addMessage } = props;
+  const { addMessage, isLoading } = props;
   const [text, setText] = useState('');
 
   function onSubmit() {
@@ -42,7 +42,7 @@ const ChatForm = (props: ChatFormProps) => {
     setText('');
   }
 
-  const disabled = text.length === 0;
+  const disabled = text.length === 0 || isLoading;
 
   return (
     <SubmitContainer edges={['bottom']}>

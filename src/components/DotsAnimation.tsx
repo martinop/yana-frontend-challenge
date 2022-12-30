@@ -12,7 +12,7 @@ const Dot = styled(Animated.View)`
   width: ${(props) => props.theme.spacing.small};
   height: ${(props) => props.theme.spacing.small};
   background-color: ${(props) => props.theme.colors.lightBlue.text};
-  border-radius: 100px;
+  border-radius: ${(props) => props.theme.borderRadius.full};
   margin: 0 ${(props) => props.theme.spacing.tiny};
 `;
 
